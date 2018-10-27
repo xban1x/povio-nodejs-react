@@ -16,8 +16,12 @@ module.exports = {
       statusCode: 204
     },
     badRequest: {
-      status: 400,
+      statusCode: 400,
       description: 'Missing user object on request.'
+    },
+    notFound: {
+      statusCode: 404,
+      description: 'Could not find user.'
     }
   },
 
@@ -39,7 +43,7 @@ module.exports = {
       });
     }
     try {
-      await sails.helpers.getUser({ username: inputs.username });
+      await sails.helpers.getUser({ id: inputs.id });
       const { liked } = await User.findOne({ id: userId }).populate('liked', {
         id: userToLikeId
       });

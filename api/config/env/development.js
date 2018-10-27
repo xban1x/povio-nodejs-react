@@ -70,6 +70,8 @@ module.exports = {
        *                                                                           *
        ****************************************************************************/
       // ssl: true,
+      adapter: require('sails-postgresql'),
+      url: 'postgresql://postgres:tibotva@localhost:5432/povio'
     }
   },
 

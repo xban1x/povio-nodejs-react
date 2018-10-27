@@ -13,7 +13,9 @@ module.exports = async (req, res, next) => {
   try {
     req.user = jwt.verify(token, sails.config.secret);
     next();
+    return;
   } catch (err) {
-    return res.status(401).json({ err: 'Invalid token' });
+    err = 'Invalid Token';
+    return res.status(401).json({ err });
   }
 };

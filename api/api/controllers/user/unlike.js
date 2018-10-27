@@ -16,8 +16,12 @@ module.exports = {
       statusCode: 204
     },
     badRequest: {
-      status: 400,
+      statusCode: 400,
       description: 'Missing user object on request.'
+    },
+    notFound: {
+      statusCode: 404,
+      description: 'Could not find user.'
     }
   },
 
@@ -34,11 +38,12 @@ module.exports = {
     if (userId === userToUnlikeId) {
       return exits.badRequest({
         code: 'E_UNLIKE_SELF',
-        problems: `User cannot like it self.`,
-        message: `User cannot like it self.`
+        problems: `User cannot unlike it self.`,
+        message: `User cannot unlike it self.`
       });
     }
     try {
+      await sails.helpers.getUser({ id: userToUnlikeId });
       const { liked } = await User.findOne({ id: userId }).populate('liked', {
         id: userToUnlikeId
       });
@@ -52,6 +57,9 @@ module.exports = {
       await User.removeFromCollection(userId, 'liked', userToUnlikeId);
       return exits.success();
     } catch (err) {
+      if (err.code === 'notFound') {
+        return exits.notFound(err.raw);
+      }
       return exits.error(err.raw);
     }
   }

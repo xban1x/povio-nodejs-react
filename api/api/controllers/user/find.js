@@ -15,8 +15,8 @@ module.exports = {
     success: {
       statusCode: 200
     },
-    badRequest: {
-      status: 400,
+    notFound: {
+      statusCode: 404,
       description: 'Missing user object on request.'
     }
   },
@@ -26,10 +26,10 @@ module.exports = {
     try {
       const user = await User.findOne({ id }).populate('likedBy');
       if (!user) {
-        return exits.badRequest({
+        return exits.notFound({
           code: 'E_USER_NOT_FOUND',
-          problems: `User to like not found.`,
-          message: `User to like not found.`
+          problems: `User not found.`,
+          message: `User not found.`
         });
       }
       return exits.success({

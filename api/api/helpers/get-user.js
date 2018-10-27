@@ -16,7 +16,7 @@ module.exports = {
       outputType: 'ref'
     },
     notFound: {
-      status: 404,
+      statusCode: 404,
       description: 'Could not find user.'
     }
   },

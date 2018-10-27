@@ -22,6 +22,28 @@
 module.exports = {
   secret: 'mysecret',
 
+  fixtures: {
+    order: ['User'],
+    User: [
+      {
+        username: 'test1',
+        password: 'test1'
+      },
+      {
+        username: 'test2',
+        password: 'test2',
+      },
+      {
+        username: 'test3',
+        password: 'test3',
+      },
+      {
+        username: 'test4',
+        password: 'test4'
+      }
+    ]
+  },
+
   /**************************************************************************
    *                                                                         *
    * Tell Sails what database(s) it should use in production.                *
@@ -70,6 +92,7 @@ module.exports = {
        *                                                                           *
        ****************************************************************************/
       // ssl: true,
+      inMemoryOnly: true
     }
   },
 

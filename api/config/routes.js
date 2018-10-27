@@ -31,7 +31,7 @@ module.exports.routes = {
   'GET /me': 'user/me',
   'PUT /me/update-password': 'user/me-update-password',
   'GET /user/:id': 'user/find',
-  'POST /user/:id/like': 'user/like',
+  'PUT /user/:id/like': 'user/like',
   'DELETE /user/:id/unlike': 'user/unlike'
 
   /***************************************************************************

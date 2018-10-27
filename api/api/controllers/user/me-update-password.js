@@ -1,5 +1,5 @@
 module.exports = {
-  friendlyName: 'Me',
+  friendlyName: 'Me - Update Password',
 
   description: 'The user instance retrieved from Token.',
 
@@ -29,7 +29,7 @@ module.exports = {
       return exits.badRequest({
         code: 'E_REQUEST_USER_MISSING',
         problems: `User information missing from request.`,
-        problems: `User information missing from request.`
+        message: `User information missing from request.`
       });
     }
     try {

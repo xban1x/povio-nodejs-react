@@ -37,8 +37,15 @@ module.exports = {
   },
 
   beforeCreate: async (values, proceed) => {
-    const hash = await bcrypt.hash(values.password, 10);
-    values.password = hash;
+    if (!values.password) {
+      proceed('Missing password.');
+      return;
+    }
+    const hashedPassword = await bcrypt.hash(
+      values.password,
+      sails.config.salt
+    );
+    values.password = hashedPassword;
     proceed();
   },
 
@@ -47,8 +54,11 @@ module.exports = {
       proceed();
       return;
     }
-    const hash = await bcrypt.hash(values.password, 10);
-    values.password = hash;
+    const hashedPassword = await bcrypt.hash(
+      values.password,
+      sails.config.salt
+    );
+    values.password = hashedPassword;
     proceed();
   }
 };

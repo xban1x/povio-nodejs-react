@@ -13,19 +13,23 @@
     "grunt": "1.0.1",
     "jsonwebtoken": "^8.3.0",
     "sails": "^1.0.2",
+    "sails-fixtures": "^2.0.0",
+    "sails-hook-fixtures": "^1.0.1-beta",
     "sails-hook-grunt": "^3.0.2",
     "sails-hook-orm": "^2.0.0-16",
     "sails-hook-sockets": "^1.4.0",
     "sails-postgresql": "^1.0.1"
   },
   "devDependencies": {
-    "@sailshq/eslint": "^4.19.3"
+    "@sailshq/eslint": "^4.19.3",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0"
   },
   "scripts": {
     "start": "NODE_ENV=production node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
-    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+    "custom-tests": "node ./node_modules/mocha/bin/mocha test/lifecycle.spec.js test/integration/**/*.spec.js"
   },
   "main": "app.js",
   "repository": {

@@ -21,11 +21,11 @@ module.exports = {
 
   exits: {
     wrongPassword: {
-      status: 400,
+      statusCode: 400,
       description: 'Wrong password.'
     },
     notFound: {
-      status: 404,
+      statusCode: 404,
       description: 'Could not find user.'
     }
   },
