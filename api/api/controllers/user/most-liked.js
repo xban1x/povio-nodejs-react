@@ -20,7 +20,13 @@ module.exports = {
       const users = await User.find().populate('likedBy');
       const response = users
         .sort((a, b) => a.likedBy.length < b.likedBy.length)
-        .map(val => val.username);
+        .map(val => {
+          return {
+            id: val.id,
+            username: val.username,
+            likes: val.likedBy.length
+          };
+        });
       return exits.success(response);
     } catch (err) {
       return exits.error({ err });
