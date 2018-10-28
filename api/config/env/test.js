@@ -21,6 +21,7 @@
 
 module.exports = {
   secret: 'mysecret',
+  salt: 10,
 
   fixtures: {
     order: ['User'],
@@ -31,11 +32,11 @@ module.exports = {
       },
       {
         username: 'test2',
-        password: 'test2',
+        password: 'test2'
       },
       {
         username: 'test3',
-        password: 'test3',
+        password: 'test3'
       },
       {
         username: 'test4',

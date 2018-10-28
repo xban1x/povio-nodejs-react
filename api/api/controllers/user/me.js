@@ -25,9 +25,12 @@ module.exports = {
       });
     }
     try {
-      const user = await sails.helpers.getUser({
-        username: this.req.user.data.username
-      });
+      const user = await sails.helpers.getUser(
+        {
+          username: this.req.user.data.username
+        },
+        'liked'
+      );
       return exits.success(user);
     } catch (err) {
       if (err.code === 'notFound') {

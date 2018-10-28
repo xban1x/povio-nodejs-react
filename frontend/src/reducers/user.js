@@ -1,10 +1,10 @@
 const user = (state = {}, action) => {
   switch (action.type) {
-    case 'SIGN_UP': {
-      return state;
+    case 'ME_SUCCESS': {
+      return { ...state, success: action.payload };
     }
-    case 'LOGIN': {
-      return state;
+    case 'ME_CLEAR': {
+      return {};
     }
     default: {
       return state;

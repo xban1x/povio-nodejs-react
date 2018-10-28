@@ -1,10 +1,7 @@
-const user = (state = { list: [] }, action) => {
+const users = (state = [], action) => {
   switch (action.type) {
     case 'FETCH_USERS_SUCCESS': {
-      return { ...state, list: action.payload };
-    }
-    case 'LOGIN': {
-      return state;
+      return action.payload;
     }
     default: {
       return state;
@@ -12,4 +9,4 @@ const user = (state = { list: [] }, action) => {
   }
 };
 
-export default user;
+export default users;

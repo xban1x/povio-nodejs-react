@@ -11,7 +11,16 @@ describe('UserController.most-liked', () => {
     supertest(sails.hooks.http.app)
       .get('/most-liked')
       .send()
-      .expect(200, ['test3', 'test2', 'test1', 'test4'], done);
+      .expect(
+        200,
+        [
+          { id: 3, username: 'test3', likes: 2 },
+          { id: 2, username: 'test2', likes: 1 },
+          { id: 1, username: 'test1', likes: 0 },
+          { id: 4, username: 'test4', likes: 0 }
+        ],
+        done
+      );
   });
 
   after('like users to adjust ordering', async () => {
