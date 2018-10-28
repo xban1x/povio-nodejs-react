@@ -7,6 +7,10 @@ module.exports = {
     search: {
       type: 'json',
       description: 'Search criteria.'
+    },
+    populate: {
+      type: 'string',
+      description: 'Which children to populate'
     }
   },
 
@@ -22,7 +26,9 @@ module.exports = {
   },
 
   fn: async function(inputs, exits) {
-    const user = await User.findOne(inputs.search);
+    const user = await (inputs.populate
+      ? User.findOne(inputs.search).populate(inputs.populate)
+      : User.findOne(inputs.search));
     if (!user) {
       return exits.notFound({
         code: 'E_USER_NOT_FOUND',

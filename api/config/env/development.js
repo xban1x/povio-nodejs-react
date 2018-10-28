@@ -21,6 +21,7 @@
 
 module.exports = {
   secret: 'mysecret',
+  salt: 10,
 
   /**************************************************************************
    *                                                                         *
@@ -138,9 +139,9 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
+      allRoutes: true,
+      allowRequestHeaders: 'content-type,authorization',
+      allowOrigins: '*'
     }
   },
 

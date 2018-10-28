@@ -27,6 +27,15 @@ describe('UserController.me', () => {
       .get('/me')
       .set('Authorization', `Bearer ${token}`)
       .send()
-      .expect(200, done);
+      .expect(200)
+      .then(res => {
+        if (!res.body.username) {
+          throw new Error('Missing username.');
+        }
+        if (!res.body.liked) {
+          throw new Error('Missing liked users.');
+        }
+        return done();
+      });
   });
 });

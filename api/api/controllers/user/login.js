@@ -32,7 +32,12 @@ module.exports = {
 
   fn: async function(inputs, exits) {
     try {
-      const user = await sails.helpers.getUser({ username: inputs.username });
+      const user = await sails.helpers.getUser(
+        {
+          username: inputs.username
+        },
+        'liked'
+      );
       const valid = await User.verifyPassword(inputs.password, user.password);
       if (!valid) {
         return exits.wrongPassword({
