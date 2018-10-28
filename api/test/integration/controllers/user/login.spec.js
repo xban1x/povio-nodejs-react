@@ -88,6 +88,12 @@ describe('UserController.login', () => {
         if (!res.body.user) {
           throw new Error('Missing user property.');
         }
+        if (!res.body.user.username) {
+          throw new Error('User missing username property.');
+        }
+        if (!res.body.user.liked) {
+          throw new Error('User missing liked property.');
+        }
         if (!res.body.token) {
           throw new Error('Missing token property.');
         }
